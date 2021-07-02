@@ -1,0 +1,32 @@
+<header>    
+    <h1>My Fruits</h1>
+    <!-- always display table's first row -->
+    <div *ngFor="let row of dataList; let i = index">
+        <div *ngIf=" i === 0 ">
+            {{row.name}}: price: ${{row.price}} weight: {{row.weight}}g color: {{row.color}}
+        </div>
+    </div>
+</header>
+
+<table class="table table-sm">
+    <!-- use directive to sort array based on column name and order we want to give -->
+    <thead>
+        <tr>
+            <th [fruitSort]="dataList" data-order="desc" data-name="id" scope="col">No.</th>
+            <th [fruitSort]="dataList" data-order="desc" data-name="name" scope="col">Name</th>
+            <th [fruitSort]="dataList" data-order="desc" data-name="price" scope="col">Price</th>
+            <th [fruitSort]="dataList" data-order="desc" data-name="weight" scope="col">Weight</th>
+            <th [fruitSort]="dataList" data-order="desc" data-name="color" scope="col">Color</th>
+        </tr>
+    </thead>
+    <!-- dynamic display of fruits array -->
+    <tbody>
+        <tr *ngFor="let data of dataList">
+           <td>{{data.id}}</td> 
+           <td>{{data.name}}</td>
+           <td>{{data.price}}</td>
+           <td>{{data.weight}}</td>
+           <td>{{data.color}}</td>
+        </tr>
+    </tbody>
+</table>
